@@ -1,0 +1,47 @@
+package com.example.demo.models;
+
+public class Locatie {
+    private int locatieID;
+    private String numeAeroport;
+    private String oras;
+    private String tara;
+
+    public Locatie(int locatieID, String numeAeroport, String oras, String tara) {
+        this.locatieID = locatieID;
+        this.numeAeroport = numeAeroport;
+        this.oras = oras;
+        this.tara = tara;
+    }
+
+    public int getLocatieID() {
+        return locatieID;
+    }
+
+    public void setLocatieID(int locatieID) {
+        this.locatieID = locatieID;
+    }
+
+    public String getNumeAeroport() {
+        return numeAeroport;
+    }
+
+    public void setNumeAeroport(String numeAeroport) {
+        this.numeAeroport = numeAeroport;
+    }
+
+    public String getOras() {
+        return oras;
+    }
+
+    public void setOras(String oras) {
+        this.oras = oras;
+    }
+
+    public String getTara() {
+        return tara;
+    }
+
+    public void setTara(String tara) {
+        this.tara = tara;
+    }
+}
