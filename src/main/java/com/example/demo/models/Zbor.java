@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Zbor {
     private int zborID;
-    private int companieID;
+    private CompanieAeriana companieAeriana;
     private Avion avion;
     private Locatie locatiePlecare;
     private Locatie locatieSosire;
@@ -17,9 +17,9 @@ public class Zbor {
     public Zbor() {
     }
 
-    public Zbor(int zborID, int companieID, Avion avion, Locatie locatiePlecare, Locatie locatieSosire, List<Locatie> listaEscale, TipZbor tipZbor, Date dataPlecare, Date dataSosire) {
+    public Zbor(int zborID, CompanieAeriana companieAeriana, Avion avion, Locatie locatiePlecare, Locatie locatieSosire, List<Locatie> listaEscale, TipZbor tipZbor, Date dataPlecare, Date dataSosire) {
         this.zborID = zborID;
-        this.companieID = companieID;
+        this.companieAeriana = companieAeriana;
         this.avion = avion;
         this.locatiePlecare = locatiePlecare;
         this.locatieSosire = locatieSosire;
@@ -36,12 +36,20 @@ public class Zbor {
         this.zborID = zborID;
     }
 
-    public int getCompanieID() {
-        return companieID;
+    public CompanieAeriana getCompanieAeriana() {
+        return companieAeriana;
     }
 
-    public void setCompanieID(int companieID) {
-        this.companieID = companieID;
+    public void setCompanieAeriana(CompanieAeriana companieAeriana) {
+        this.companieAeriana = companieAeriana;
+    }
+
+    public TipZbor getTipZbor() {
+        return tipZbor;
+    }
+
+    public void setTipZbor(TipZbor tipZbor) {
+        this.tipZbor = tipZbor;
     }
 
     public Avion getAvion() {

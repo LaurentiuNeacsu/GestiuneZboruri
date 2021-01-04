@@ -22,7 +22,7 @@ public class ZborController {
         service.adaugaZbor(zbor);
     }
 
-    @RequestMapping("/zboruri/edit")
+    @RequestMapping("/zboruri/editByID")
     public void editZbor(int zborID) {
         service.modificaZbor(zborID);
     }
