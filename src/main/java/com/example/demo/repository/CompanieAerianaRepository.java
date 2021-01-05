@@ -10,13 +10,13 @@ import java.util.List;
 
 @Repository
 public class CompanieAerianaRepository {
-    private JdbcTemplate companieAerianaJdbcTemplate;
+    private static JdbcTemplate companieAerianaJdbcTemplate;
 
     public List<CompanieAeriana> getAllCompaniiAeriene() {
         return companieAerianaJdbcTemplate.query(CompanieAerianaQueries.SELECT_ALL_COMPANII, new BeanPropertyRowMapper<>(CompanieAeriana.class));
     }
 
-    public int getCompanieAerianaIDByNume(String nume) {
+    public static int getCompanieAerianaIDByNume(String nume) {
         return companieAerianaJdbcTemplate.queryForObject(
                 CompanieAerianaQueries.SELECT_COMPANIE_BY_NAME,
                 new Object[]{nume},

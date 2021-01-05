@@ -1,8 +1,9 @@
 package com.example.demo.repository;
 
-import com.example.demo.models.CompanieAeriana;
 import com.example.demo.models.Zbor;
 import com.example.demo.utils.TipZbor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,13 +14,10 @@ import com.example.demo.queries.ZborQueries;
 
 @Repository
 public class ZborRepository {
+    private static final Logger logger = LoggerFactory.getLogger(ZborRepository.class);
+
     @Autowired
     private JdbcTemplate zborJdbcTemplate;
-    @Autowired
-    private AvionRepository avionRepository;
-    @Autowired
-    private CompanieAerianaRepository companieAerianaRepository;
-
 
     //private List<Zbor> listaZboruri = new ArrayList<>();
 
@@ -29,9 +27,10 @@ public class ZborRepository {
 
     public void adaugaZbor(String companieAeriana, int avionID, String locatiePlecareNume, String locatieSosireNume,
                            TipZbor tipZbor, Date dataPlecare, Date dataSosire) {
-        int companieID = companieAerianaRepository.getCompanieAerianaIDByNume(companieAeriana);
-//        zborJdbcTemplate.update(ZborQueries.ADD_ZBOR, companieID, avionID, locatiePlecareID, locatieSosireID, )
-        //zborJdbcTemplate.query(ZborQueries.ADD_ZBOR, //ceva)
+        int companieID = CompanieAerianaRepository.getCompanieAerianaIDByNume(companieAeriana);
+        int locatiePlecareID = LocatieRepository.getLocatieIDByNume(locatiePlecareNume);
+        int locatieSosireID = LocatieRepository.getLocatieIDByNume(locatieSosireNume);
+        zborJdbcTemplate.update(ZborQueries.ADD_ZBOR, companieID, avionID, locatiePlecareID, locatieSosireID, tipZbor, dataPlecare, dataSosire);
     }
 
     public void modificaZbor(int id) {
