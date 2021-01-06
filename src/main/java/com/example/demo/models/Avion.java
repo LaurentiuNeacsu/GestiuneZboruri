@@ -8,13 +8,10 @@ public class Avion {
     private int vechime;
     private boolean isVerificatTehnic;
 
-    public Avion(int avionID, String nume, int capacitate, CompanieAeriana companieAeriana, int vechime, boolean isVerificatTehnic) {
-        this.avionID = avionID;
+    public Avion(String nume, int capacitate, CompanieAeriana companieAeriana) {
         this.nume = nume;
         this.capacitate = capacitate;
         this.companieAeriana = companieAeriana;
-        this.vechime = vechime;
-        this.isVerificatTehnic = isVerificatTehnic;
     }
 
     public int getAvionID() {

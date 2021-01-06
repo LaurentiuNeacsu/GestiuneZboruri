@@ -19,18 +19,16 @@ public class ZborRepository {
     @Autowired
     private JdbcTemplate zborJdbcTemplate;
 
-    //private List<Zbor> listaZboruri = new ArrayList<>();
-
     public List<Zbor> getAllZboruri() {
         return zborJdbcTemplate.query(ZborQueries.SELECT_ALL_ZBORURI, new BeanPropertyRowMapper<>(Zbor.class));
     }
 
-    public void adaugaZbor(String companieAeriana, int avionID, String locatiePlecareNume, String locatieSosireNume,
-                           TipZbor tipZbor, Date dataPlecare, Date dataSosire) {
-        int companieID = CompanieAerianaRepository.getCompanieAerianaIDByNume(companieAeriana);
-        int locatiePlecareID = LocatieRepository.getLocatieIDByNume(locatiePlecareNume);
-        int locatieSosireID = LocatieRepository.getLocatieIDByNume(locatieSosireNume);
-        zborJdbcTemplate.update(ZborQueries.ADD_ZBOR, companieID, avionID, locatiePlecareID, locatieSosireID, tipZbor, dataPlecare, dataSosire);
+    public void adaugaZbor(Zbor zbor) {
+        int companieID = CompanieAerianaRepository.getCompanieAerianaIDByNume(zbor.getCompanieAeriana().getNumeCompanie());
+        int locatiePlecareID = LocatieRepository.getLocatieIDByNumeAeroport(zbor.getLocatiePlecare().getNumeAeroport());
+        int locatieSosireID = LocatieRepository.getLocatieIDByNumeAeroport(zbor.getLocatieSosire().getNumeAeroport());
+        //zborJdbcTemplate.update(ZborQueries.ADD_ZBOR, companieID, avionID, locatiePlecareID, locatieSosireID, tipZbor, dataPlecare, dataSosire);
+        logger.info(zbor.toString());
     }
 
     public void modificaZbor(int id) {

@@ -17,8 +17,11 @@ public class Zbor {
     public Zbor() {
     }
 
-    public Zbor(int zborID, CompanieAeriana companieAeriana, Avion avion, Locatie locatiePlecare, Locatie locatieSosire, List<Locatie> listaEscale, TipZbor tipZbor, Date dataPlecare, Date dataSosire) {
-        this.zborID = zborID;
+    public Zbor(CompanieAeriana companieAeriana, Avion avion,
+                Locatie locatiePlecare,
+                Locatie locatieSosire,
+                TipZbor tipZbor,
+                Date dataPlecare, Date dataSosire) {
         this.companieAeriana = companieAeriana;
         this.avion = avion;
         this.locatiePlecare = locatiePlecare;

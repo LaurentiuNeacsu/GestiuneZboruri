@@ -7,12 +7,11 @@ import java.sql.Types;
 public class LocatieRepository {
     private static JdbcTemplate locatieJdbcTemplate;
 
-    public static int getLocatieIDByNume(String nume) {
+    public static int getLocatieIDByNumeAeroport(String nume) {
         return locatieJdbcTemplate.queryForObject(
-                LocatieQueries.SELECT_COMPANIE_BY_NAME,
+                LocatieQueries.SELECT_COMPANIE_BY_AIRPORTNAME,
                 new Object[]{nume},
                 new int[]{Types.VARCHAR},
                 Integer.class);
-
     }
 }

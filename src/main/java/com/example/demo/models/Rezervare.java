@@ -10,8 +10,7 @@ public class Rezervare {
     private double pret;
     private double discount;
 
-    public Rezervare(int rezervareID, Zbor zbor, Client client, TipRezervare tipRezervare, double pret, double discount) {
-        this.rezervareID = rezervareID;
+    public Rezervare(Zbor zbor, Client client, TipRezervare tipRezervare, double pret, double discount) {
         this.zbor = zbor;
         this.client = client;
         this.tipRezervare = tipRezervare;

@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
-import com.example.demo.models.Zbor;
+import com.example.demo.models.*;
 import com.example.demo.service.ZborService;
+import com.example.demo.utils.TipZbor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.Date;
 import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
@@ -18,7 +20,10 @@ public class ZborController {
     }
 
     @RequestMapping("/zboruri/add")
-    public void addZbor(Zbor zbor) {
+    public void adaugaZbor(Locatie locatiePlecare, Locatie locatieSosire,
+                           String companieAeriana, Avion avion, TipZbor tipZbor,
+                           Date dataPlecare, Date dataSosire) {
+        Zbor zbor = new Zbor(new CompanieAeriana(companieAeriana), avion, locatiePlecare, locatieSosire, tipZbor, dataPlecare, dataSosire);
         service.adaugaZbor(zbor);
     }
 

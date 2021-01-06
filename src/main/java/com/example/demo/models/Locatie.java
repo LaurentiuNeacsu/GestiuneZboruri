@@ -6,8 +6,7 @@ public class Locatie {
     private String oras;
     private String tara;
 
-    public Locatie(int locatieID, String numeAeroport, String oras, String tara) {
-        this.locatieID = locatieID;
+    public Locatie(String numeAeroport, String oras, String tara) {
         this.numeAeroport = numeAeroport;
         this.oras = oras;
         this.tara = tara;

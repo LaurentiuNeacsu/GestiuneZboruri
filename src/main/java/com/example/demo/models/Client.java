@@ -12,8 +12,7 @@ public class Client {
     private String adresa;
     private TipPersoana tipPersoana;
 
-    public Client(int clientID, String nume, String prenume, String CNP, String email, String nrTelefon, String adresa, TipPersoana tipPersoana) {
-        this.clientID = clientID;
+    public Client(String nume, String prenume, String CNP, String email, String nrTelefon, String adresa, TipPersoana tipPersoana) {
         this.nume = nume;
         this.prenume = prenume;
         this.CNP = CNP;

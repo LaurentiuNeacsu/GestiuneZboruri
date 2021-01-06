@@ -4,8 +4,7 @@ public class CompanieAeriana {
     private int companieID;
     private String numeCompanie;
 
-    public CompanieAeriana(int companieID, String numeCompanie) {
-        this.companieID = companieID;
+    public CompanieAeriana(String numeCompanie) {
         this.numeCompanie = numeCompanie;
     }
 

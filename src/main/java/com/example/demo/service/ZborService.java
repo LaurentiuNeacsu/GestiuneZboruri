@@ -16,7 +16,7 @@ public class ZborService {
     }
 
     public void adaugaZbor(Zbor zbor) {
-        //zborRepository.adaugaZbor(zbor);
+        zborRepository.adaugaZbor(zbor);
     }
 
     public void modificaZbor(int id) {
