@@ -1,7 +1,7 @@
 package com.example.demo.models;
 
 public class Locatie {
-    private int locatieID;
+    private long locatieID;
     private String numeAeroport;
     private String oras;
     private String tara;
@@ -12,7 +12,7 @@ public class Locatie {
         this.tara = tara;
     }
 
-    public int getLocatieID() {
+    public long getLocatieID() {
         return locatieID;
     }
 

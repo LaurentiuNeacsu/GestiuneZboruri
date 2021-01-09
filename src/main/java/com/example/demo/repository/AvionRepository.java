@@ -10,13 +10,13 @@ import java.util.List;
 
 @Repository
 public class AvionRepository {
-    private JdbcTemplate avionJdbcTemplate;
+    private static JdbcTemplate avionJdbcTemplate;
 
-    public List<Avion> getAvionIDByNameAndCompany(String avionNume, String companieNume) {
+    public List<Avion> getAvioaneByNameAndCompany(String avionNume, String companieNume) {
         return avionJdbcTemplate.query(
-                AvionQueries.SELECT_AVION_BY_NAME_AND_COMPANY,
+                AvionQueries.SELECT_AVIOANE_BY_NAME_AND_COMPANY,
                 new Object[]{companieNume, avionNume},
-                new int[]{Types.INTEGER},
+                new int[]{Types.VARCHAR, Types.VARCHAR},
                 new BeanPropertyRowMapper<>(Avion.class));
     }
 }

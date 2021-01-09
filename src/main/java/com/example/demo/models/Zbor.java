@@ -1,105 +1,65 @@
 package com.example.demo.models;
 
-import com.example.demo.utils.TipZbor;
 import java.util.Date;
-import java.util.List;
 
 public class Zbor {
-    private int zborID;
-    private CompanieAeriana companieAeriana;
-    private Avion avion;
-    private Locatie locatiePlecare;
-    private Locatie locatieSosire;
-    private TipZbor tipZbor;
+    private long zborID;
+    private long companieAerianaID;
+    private long avionID;
+    private long locatiePlecareID;
+    private long locatieSosireID;
+    private int tipZborID;
     private Date dataPlecare;
     private Date dataSosire;
 
     public Zbor() {
     }
 
-    public Zbor(CompanieAeriana companieAeriana, Avion avion,
-                Locatie locatiePlecare,
-                Locatie locatieSosire,
-                TipZbor tipZbor,
-                Date dataPlecare, Date dataSosire) {
-        this.companieAeriana = companieAeriana;
-        this.avion = avion;
-        this.locatiePlecare = locatiePlecare;
-        this.locatieSosire = locatieSosire;
-        this.tipZbor = tipZbor;
+    public Zbor(long companieAerianaID,
+                long avionID,
+                long locatiePlecareID,
+                long locatieSosireID,
+                int tipZborID,
+                Date dataPlecare,
+                Date dataSosire) {
+        this.companieAerianaID = companieAerianaID;
+        this.avionID = avionID;
+        this.locatiePlecareID = locatiePlecareID;
+        this.locatieSosireID = locatieSosireID;
+        this.tipZborID = tipZborID;
         this.dataPlecare = dataPlecare;
         this.dataSosire = dataSosire;
     }
 
-    public int getZborID() {
+    public long getZborID() {
         return zborID;
     }
 
-    public void setZborID(int zborID) {
-        this.zborID = zborID;
+    public long getCompanieAerianaID() {
+        return companieAerianaID;
     }
 
-    public CompanieAeriana getCompanieAeriana() {
-        return companieAeriana;
+    public long getAvionID() {
+        return avionID;
     }
 
-    public void setCompanieAeriana(CompanieAeriana companieAeriana) {
-        this.companieAeriana = companieAeriana;
+    public long getLocatiePlecareID() {
+        return locatiePlecareID;
     }
 
-    public TipZbor getTipZbor() {
-        return tipZbor;
+    public long getLocatieSosireID() {
+        return locatieSosireID;
     }
 
-    public void setTipZbor(TipZbor tipZbor) {
-        this.tipZbor = tipZbor;
-    }
-
-    public Avion getAvion() {
-        return avion;
-    }
-
-    public void setAvion(Avion avion) {
-        this.avion = avion;
-    }
-
-    public Locatie getLocatiePlecare() {
-        return locatiePlecare;
-    }
-
-    public void setLocatiePlecare(Locatie locatiePlecare) {
-        this.locatiePlecare = locatiePlecare;
-    }
-
-    public Locatie getLocatieSosire() {
-        return locatieSosire;
-    }
-
-    public void setLocatieSosire(Locatie locatieSosire) {
-        this.locatieSosire = locatieSosire;
-    }
-
-    public TipZbor getTipRezervare() {
-        return tipZbor;
-    }
-
-    public void setTipRezervare(TipZbor tipRezervare) {
-        this.tipZbor = tipRezervare;
+    public int getTipZborID() {
+        return tipZborID;
     }
 
     public Date getDataPlecare() {
         return dataPlecare;
     }
 
-    public void setDataPlecare(Date dataPlecare) {
-        this.dataPlecare = dataPlecare;
-    }
-
     public Date getDataSosire() {
         return dataSosire;
-    }
-
-    public void setDataSosire(Date dataSosire) {
-        this.dataSosire = dataSosire;
     }
 }

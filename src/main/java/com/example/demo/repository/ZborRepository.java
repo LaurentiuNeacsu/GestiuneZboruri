@@ -1,14 +1,12 @@
 package com.example.demo.repository;
 
 import com.example.demo.models.Zbor;
-import com.example.demo.utils.TipZbor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import java.util.Date;
 import java.util.List;
 import com.example.demo.queries.ZborQueries;
 
@@ -24,10 +22,14 @@ public class ZborRepository {
     }
 
     public void adaugaZbor(Zbor zbor) {
-        int companieID = CompanieAerianaRepository.getCompanieAerianaIDByNume(zbor.getCompanieAeriana().getNumeCompanie());
-        int locatiePlecareID = LocatieRepository.getLocatieIDByNumeAeroport(zbor.getLocatiePlecare().getNumeAeroport());
-        int locatieSosireID = LocatieRepository.getLocatieIDByNumeAeroport(zbor.getLocatieSosire().getNumeAeroport());
-        //zborJdbcTemplate.update(ZborQueries.ADD_ZBOR, companieID, avionID, locatiePlecareID, locatieSosireID, tipZbor, dataPlecare, dataSosire);
+        zborJdbcTemplate.update(ZborQueries.ADD_ZBOR,
+                zbor.getCompanieAerianaID(),
+                zbor.getAvionID(),
+                zbor.getLocatiePlecareID(),
+                zbor.getLocatieSosireID(),
+                zbor.getTipZborID(),
+                zbor.getDataPlecare(),
+                zbor.getDataSosire());
         logger.info(zbor.toString());
     }
 
@@ -35,7 +37,7 @@ public class ZborRepository {
 
     }
 
-    public Zbor vizualizeazaZbor(int id) {
+    public Zbor vizualizeazaZbor(Long id) {
         return new Zbor();
     }
 

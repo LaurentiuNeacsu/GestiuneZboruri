@@ -1,48 +1,52 @@
 package com.example.demo.controller;
 
+import com.example.demo.mapper.ZborRequestToZborMapper;
 import com.example.demo.models.*;
+import com.example.demo.request_templates.ZborRequest;
 import com.example.demo.service.ZborService;
-import com.example.demo.utils.TipZbor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import java.util.Date;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
-@org.springframework.web.bind.annotation.RestController
-@RequestMapping("/gestiune")
+@RestController
+@RequestMapping("/gestiune/zboruri")
 public class ZborController {
     @Autowired
     private ZborService service;
 
-    @RequestMapping("/zboruri/get")
+    @RequestMapping("/viewAll")
     public List<Zbor> getAllZboruri() {
         return service.getAllZboruri();
     }
 
-    @RequestMapping("/zboruri/add")
-    public void adaugaZbor(Locatie locatiePlecare, Locatie locatieSosire,
-                           String companieAeriana, Avion avion, TipZbor tipZbor,
-                           Date dataPlecare, Date dataSosire) {
-        Zbor zbor = new Zbor(new CompanieAeriana(companieAeriana), avion, locatiePlecare, locatieSosire, tipZbor, dataPlecare, dataSosire);
-        service.adaugaZbor(zbor);
+    @PostMapping("/add")
+    public ResponseEntity<String> adaugaZbor(@Valid @RequestBody ZborRequest zborRequest) {
+        Zbor zborCreat = ZborRequestToZborMapper.mapZborRequestToZborDBObject(zborRequest);
+        service.adaugaZbor(zborCreat);
+        return ResponseEntity
+                .created(URI.create("/viewByID/" + zborCreat.getZborID()))
+                .body("FCSB = STEAUA");
     }
 
-    @RequestMapping("/zboruri/editByID")
+    @PostMapping("/editByID")
     public void editZbor(int zborID) {
         service.modificaZbor(zborID);
     }
 
-    @RequestMapping("/zboruri/viewByID")
-    public Zbor vizualizeazaZbor(int id) {
-        return service.vizualizeazaZbor(id);
+    @GetMapping("/viewByID/{id}")
+    public Zbor vizualizeazaZbor(@PathVariable Long id) {
+        return service.vizualizeazaZborByID(id);
     }
 
-    @RequestMapping("/zboruri/viewByLocatiePlecare")
+    @GetMapping("/viewByLocatiePlecare")
     public Zbor vizualizeazaZborDupaLocatiePlecare(String locatie) {
         return service.vizualizeazaZborDupaLocatiePlecare(locatie);
     }
 
-    @RequestMapping("/zboruri/viewByLocatieSosire")
+    @GetMapping("/viewByLocatieSosire")
     public Zbor vizualizeazaZborDupaLocatieSosire(String locatie) {
         return service.vizualizeazaZborDupaLocatieSosire(locatie);
     }

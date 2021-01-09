@@ -27,7 +27,7 @@ public class ZborService {
         return zborRepository.stergeZbor(id);
     }
 
-    public Zbor vizualizeazaZbor(int id) {
+    public Zbor vizualizeazaZborByID(Long id) {
         return zborRepository.vizualizeazaZbor(id);
     }
 

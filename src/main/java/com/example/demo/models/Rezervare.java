@@ -3,7 +3,7 @@ package com.example.demo.models;
 import com.example.demo.utils.TipRezervare;
 
 public class Rezervare {
-    private int rezervareID;
+    private long rezervareID;
     private Zbor zbor;
     private Client client;
     private TipRezervare tipRezervare;
@@ -18,7 +18,7 @@ public class Rezervare {
         this.discount = discount;
     }
 
-    public int getRezervareID() {
+    public long getRezervareID() {
         return rezervareID;
     }
 

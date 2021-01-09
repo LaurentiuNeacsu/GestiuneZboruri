@@ -9,7 +9,7 @@ public class LocatieRepository {
 
     public static int getLocatieIDByNumeAeroport(String nume) {
         return locatieJdbcTemplate.queryForObject(
-                LocatieQueries.SELECT_COMPANIE_BY_AIRPORTNAME,
+                LocatieQueries.SELECT_LOCATIE_BY_AIRPORTNAME,
                 new Object[]{nume},
                 new int[]{Types.VARCHAR},
                 Integer.class);

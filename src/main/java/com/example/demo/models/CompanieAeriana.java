@@ -1,26 +1,30 @@
 package com.example.demo.models;
 
 public class CompanieAeriana {
-    private int companieID;
+    private long companieID;
     private String numeCompanie;
+
+    public CompanieAeriana() {
+
+    }
 
     public CompanieAeriana(String numeCompanie) {
         this.numeCompanie = numeCompanie;
     }
 
-    public int getCompanieID() {
+    public long getCompanieID() {
         return companieID;
-    }
-
-    public void setCompanieID(int companieID) {
-        this.companieID = companieID;
     }
 
     public String getNumeCompanie() {
         return numeCompanie;
     }
 
-    public void setNumeCompanie(String numeCompanie) {
-        this.numeCompanie = numeCompanie;
+    @Override
+    public String toString() {
+        return "CompanieAeriana{" +
+                "companieID=" + companieID +
+                ", numeCompanie='" + numeCompanie + '\'' +
+                '}';
     }
 }
