@@ -4,14 +4,22 @@ import com.example.demo.models.Zbor;
 import com.example.demo.repository.CompanieAerianaRepository;
 import com.example.demo.repository.LocatieRepository;
 import com.example.demo.request_templates.ZborRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ZborRequestToZborMapper {
-    public static Zbor mapZborRequestToZborDBObject(ZborRequest zborRequest) {
+    @Autowired
+    private CompanieAerianaRepository companieAerianaRepository;
+    @Autowired
+    private LocatieRepository locatieRepository;
+
+    public Zbor mapZborRequestToZborDBObject(ZborRequest zborRequest) {
         return new Zbor(
-                new CompanieAerianaRepository().getCompanieAerianaIDByNume(zborRequest.getCompanieAeriana().getNumeCompanie()),
+                companieAerianaRepository.getCompanieAerianaIDByNume(zborRequest.getCompanieAeriana().getNumeCompanie()),
                 zborRequest.getAvion().getAvionID(),
-                LocatieRepository.getLocatieIDByNumeAeroport(zborRequest.getLocatiePlecare().getNumeAeroport()),
-                LocatieRepository.getLocatieIDByNumeAeroport(zborRequest.getLocatieSosire().getNumeAeroport()),
+                locatieRepository.getLocatieIDByNumeAeroport(zborRequest.getLocatiePlecare().getNumeAeroport()),
+                locatieRepository.getLocatieIDByNumeAeroport(zborRequest.getLocatieSosire().getNumeAeroport()),
                 zborRequest.getTipZbor().ordinal(),
                 zborRequest.getDataPlecare(),
                 zborRequest.getDataSosire());

@@ -17,6 +17,9 @@ public class ZborController {
     @Autowired
     private ZborService zborService;
 
+    @Autowired
+    private ZborRequestToZborMapper zborRequestToZborMapper;
+
     @RequestMapping("/viewAll")
     public List<Zbor> getAllZboruri() {
         return zborService.getAllZboruri();
@@ -24,11 +27,9 @@ public class ZborController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addZbor(@Valid @RequestBody ZborRequest zborRequest) {
-        Zbor zborCreat = ZborRequestToZborMapper.mapZborRequestToZborDBObject(zborRequest);
+        Zbor zborCreat = zborRequestToZborMapper.mapZborRequestToZborDBObject(zborRequest);
         zborService.addZbor(zborCreat);
-        return ResponseEntity
-                .created(URI.create("/viewByID/" + zborCreat.getZborID()))
-                .body("FCSB = STEAUA");
+        return ResponseEntity.accepted().body("Zbor adaugat cu succes.");
     }
 
     @PostMapping("/editByID")

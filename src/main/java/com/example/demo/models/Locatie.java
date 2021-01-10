@@ -6,41 +6,41 @@ public class Locatie {
     private String oras;
     private String tara;
 
+    public Locatie() {
+
+    }
+
     public Locatie(String numeAeroport, String oras, String tara) {
         this.numeAeroport = numeAeroport;
         this.oras = oras;
         this.tara = tara;
     }
 
-    public long getLocatieID() {
-        return locatieID;
-    }
-
-    public void setLocatieID(int locatieID) {
+    public Locatie(long locatieID, String numeAeroport, String oras, String tara) {
         this.locatieID = locatieID;
+        this.numeAeroport = numeAeroport;
+        this.oras = oras;
+        this.tara = tara;
     }
 
     public String getNumeAeroport() {
         return numeAeroport;
     }
 
-    public void setNumeAeroport(String numeAeroport) {
-        this.numeAeroport = numeAeroport;
-    }
-
     public String getOras() {
         return oras;
     }
-
-    public void setOras(String oras) {
-        this.oras = oras;
-    }
-
     public String getTara() {
         return tara;
     }
 
-    public void setTara(String tara) {
-        this.tara = tara;
+    @Override
+    public String toString() {
+        return "Locatie{" +
+                "locatieID=" + locatieID +
+                ", numeAeroport='" + numeAeroport + '\'' +
+                ", oras='" + oras + '\'' +
+                ", tara='" + tara + '\'' +
+                '}';
     }
 }

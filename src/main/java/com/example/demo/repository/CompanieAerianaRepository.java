@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
@@ -35,7 +32,7 @@ public class CompanieAerianaRepository {
         return companieAerianaJdbcTemplate.queryForObject(
                 CompanieAerianaQueries.SELECT_COMPANIEID_BY_NAME,
                 new Object[]{nume}, new int[]{Types.VARCHAR},
-                (resultSet, i) -> resultSet.getLong("companieID"));
+                Long.class);
     }
 
     public void addCompanieAeriana(CompanieAeriana companieAeriana) {

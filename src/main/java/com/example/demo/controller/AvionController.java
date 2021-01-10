@@ -19,9 +19,9 @@ public class AvionController {
     @Autowired
     private AvionRequestToAvionMapper avionRequestToAvionMapper;
 
-    @GetMapping("/viewByCompNameAndAvail/{companieNume}")
-    public List<Avion> getAvioaneByCompanyAndAvailability(@PathVariable String companieNume) {
-        return avionService.getAvioaneByCompanyAndAvailability(companieNume);
+    @GetMapping("/viewByCompNameAndAvail/{numeCompanie}")
+    public List<Avion> getAvioaneByCompanyAndAvailability(@PathVariable String numeCompanie) {
+        return avionService.getAvioaneByCompanyAndAvailability(numeCompanie);
     }
 
     @PostMapping("/add")

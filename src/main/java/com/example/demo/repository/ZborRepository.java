@@ -22,7 +22,7 @@ public class ZborRepository {
     }
 
     public void addZbor(Zbor zbor) {
-        zborJdbcTemplate.update(ZborQueries.ADD_ZBOR,
+        zborJdbcTemplate.update(ZborQueries.INSERT_ZBOR,
                 zbor.getCompanieAerianaID(),
                 zbor.getAvionID(),
                 zbor.getLocatiePlecareID(),
