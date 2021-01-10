@@ -12,6 +12,11 @@ public class CompanieAeriana {
         this.numeCompanie = numeCompanie;
     }
 
+    public CompanieAeriana(long companieID, String numeCompanie) {
+        this.companieID = companieID;
+        this.numeCompanie = numeCompanie;
+    }
+
     public long getCompanieID() {
         return companieID;
     }

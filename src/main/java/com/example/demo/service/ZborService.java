@@ -15,8 +15,8 @@ public class ZborService {
         return zborRepository.getAllZboruri();
     }
 
-    public void adaugaZbor(Zbor zbor) {
-        zborRepository.adaugaZbor(zbor);
+    public void addZbor(Zbor zbor) {
+        zborRepository.addZbor(zbor);
     }
 
     public void modificaZbor(int id) {

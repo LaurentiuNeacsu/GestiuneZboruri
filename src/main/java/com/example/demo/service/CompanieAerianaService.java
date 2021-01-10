@@ -5,16 +5,22 @@ import com.example.demo.repository.CompanieAerianaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CompanieAerianaService {
     @Autowired
     private CompanieAerianaRepository companieAerianaRepository;
 
-    public void adaugaCompanieAeriana(CompanieAeriana companieAeriana) {
-       companieAerianaRepository.adaugaCompanieAeriana(companieAeriana);
+    public List<CompanieAeriana> getAllCompaniiAeriene() {
+        return companieAerianaRepository.getAllCompaniiAeriene();
     }
 
-    public CompanieAeriana vizualizareCompanieAerianaByID(Long id) {
-        return companieAerianaRepository.vizualizareCompanieAerianaByID(id);
+    public void addCompanieAeriana(CompanieAeriana companieAeriana) {
+       companieAerianaRepository.addCompanieAeriana(companieAeriana);
+    }
+
+    public CompanieAeriana getCompanieAerianaByID(Long id) {
+        return companieAerianaRepository.getCompanieAerianaByID(id);
     }
 }

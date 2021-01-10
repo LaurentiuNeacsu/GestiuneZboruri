@@ -4,17 +4,50 @@ public class Avion {
     private long avionID;
     private String nume;
     private int capacitate;
-    private long companieAerianaID;
-//    private int vechime;
-//    private boolean isVerificatTehnic;
+    private long companieID;
+    private boolean areCursa;
 
-    public Avion(String nume, int capacitate, long companieAerianaID) {
+    public Avion(String nume, int capacitate, long companieID, boolean areCursa) {
         this.nume = nume;
         this.capacitate = capacitate;
-        this.companieAerianaID = companieAerianaID;
+        this.companieID = companieID;
+        this.areCursa = areCursa;
+    }
+
+    public Avion(long avionID, String nume, int capacitate, boolean areCursa) {
+        this.avionID = avionID;
+        this.nume = nume;
+        this.capacitate = capacitate;
+        this.areCursa = areCursa;
     }
 
     public long getAvionID() {
         return avionID;
+    }
+
+    public String getNume() {
+        return nume;
+    }
+
+    public int getCapacitate() {
+        return capacitate;
+    }
+
+    public long getCompanieID() {
+        return companieID;
+    }
+
+    public boolean getAreCursa() {
+        return areCursa;
+    }
+
+    @Override
+    public String toString() {
+        return "Avion{" +
+                "avionID=" + avionID +
+                ", nume='" + nume + '\'' +
+                ", capacitate=" + capacitate +
+                ", companieAerianaID=" + companieID +
+                '}';
     }
 }

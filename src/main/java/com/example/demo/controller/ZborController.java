@@ -15,17 +15,17 @@ import java.util.List;
 @RequestMapping("/gestiune/zboruri")
 public class ZborController {
     @Autowired
-    private ZborService service;
+    private ZborService zborService;
 
     @RequestMapping("/viewAll")
     public List<Zbor> getAllZboruri() {
-        return service.getAllZboruri();
+        return zborService.getAllZboruri();
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> adaugaZbor(@Valid @RequestBody ZborRequest zborRequest) {
+    public ResponseEntity<String> addZbor(@Valid @RequestBody ZborRequest zborRequest) {
         Zbor zborCreat = ZborRequestToZborMapper.mapZborRequestToZborDBObject(zborRequest);
-        service.adaugaZbor(zborCreat);
+        zborService.addZbor(zborCreat);
         return ResponseEntity
                 .created(URI.create("/viewByID/" + zborCreat.getZborID()))
                 .body("FCSB = STEAUA");
@@ -33,21 +33,21 @@ public class ZborController {
 
     @PostMapping("/editByID")
     public void editZbor(int zborID) {
-        service.modificaZbor(zborID);
+        zborService.modificaZbor(zborID);
     }
 
     @GetMapping("/viewByID/{id}")
     public Zbor vizualizeazaZbor(@PathVariable Long id) {
-        return service.vizualizeazaZborByID(id);
+        return zborService.vizualizeazaZborByID(id);
     }
 
     @GetMapping("/viewByLocatiePlecare")
     public Zbor vizualizeazaZborDupaLocatiePlecare(String locatie) {
-        return service.vizualizeazaZborDupaLocatiePlecare(locatie);
+        return zborService.vizualizeazaZborDupaLocatiePlecare(locatie);
     }
 
     @GetMapping("/viewByLocatieSosire")
     public Zbor vizualizeazaZborDupaLocatieSosire(String locatie) {
-        return service.vizualizeazaZborDupaLocatieSosire(locatie);
+        return zborService.vizualizeazaZborDupaLocatieSosire(locatie);
     }
 }

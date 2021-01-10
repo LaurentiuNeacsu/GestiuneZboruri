@@ -21,7 +21,7 @@ public class ZborRepository {
         return zborJdbcTemplate.query(ZborQueries.SELECT_ALL_ZBORURI, new BeanPropertyRowMapper<>(Zbor.class));
     }
 
-    public void adaugaZbor(Zbor zbor) {
+    public void addZbor(Zbor zbor) {
         zborJdbcTemplate.update(ZborQueries.ADD_ZBOR,
                 zbor.getCompanieAerianaID(),
                 zbor.getAvionID(),

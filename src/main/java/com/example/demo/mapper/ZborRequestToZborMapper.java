@@ -8,7 +8,7 @@ import com.example.demo.request_templates.ZborRequest;
 public class ZborRequestToZborMapper {
     public static Zbor mapZborRequestToZborDBObject(ZborRequest zborRequest) {
         return new Zbor(
-                CompanieAerianaRepository.getCompanieAerianaIDByNume(zborRequest.getCompanieAeriana().getNumeCompanie()),
+                new CompanieAerianaRepository().getCompanieAerianaIDByNume(zborRequest.getCompanieAeriana().getNumeCompanie()),
                 zborRequest.getAvion().getAvionID(),
                 LocatieRepository.getLocatieIDByNumeAeroport(zborRequest.getLocatiePlecare().getNumeAeroport()),
                 LocatieRepository.getLocatieIDByNumeAeroport(zborRequest.getLocatieSosire().getNumeAeroport()),
