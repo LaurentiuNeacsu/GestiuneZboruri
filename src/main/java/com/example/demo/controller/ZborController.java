@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -21,8 +20,8 @@ public class ZborController {
     private ZborRequestToZborMapper zborRequestToZborMapper;
 
     @RequestMapping("/viewAll")
-    public List<Zbor> getAllZboruri() {
-        return zborService.getAllZboruri();
+    public ResponseEntity<List<ZborRequest>> getAllZboruri() {
+        return ResponseEntity.ok(zborService.getAllZboruri());
     }
 
     @PostMapping("/add")
@@ -38,8 +37,8 @@ public class ZborController {
     }
 
     @GetMapping("/viewByID/{id}")
-    public Zbor vizualizeazaZbor(@PathVariable Long id) {
-        return zborService.vizualizeazaZborByID(id);
+    public Zbor getZborByID(@PathVariable Long id) {
+        return zborService.getZborByID(id);
     }
 
     @GetMapping("/viewByLocatiePlecare")

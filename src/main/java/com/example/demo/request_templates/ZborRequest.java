@@ -3,10 +3,10 @@ package com.example.demo.request_templates;
 import com.example.demo.models.Avion;
 import com.example.demo.models.CompanieAeriana;
 import com.example.demo.models.Locatie;
-import com.example.demo.utils.TipZbor;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class ZborRequest {
     @NotNull
@@ -17,25 +17,23 @@ public class ZborRequest {
     private Locatie locatiePlecare;
     @NotNull
     private Locatie locatieSosire;
-    @NotNull
-    private TipZbor tipZbor;
     @Future
-    private Date dataPlecare;
+    @JsonFormat(pattern = "YYYY-MM-dd HH:mm")
+    private LocalDateTime dataPlecare;
     @Future
-    private Date dataSosire;
+    @JsonFormat(pattern = "YYYY-MM-dd HH:mm")
+    private LocalDateTime dataSosire;
 
     public ZborRequest(@NotNull CompanieAeriana companieAeriana,
                        @NotNull Avion avion,
                        @NotNull Locatie locatiePlecare,
                        @NotNull Locatie locatieSosire,
-                       @NotNull TipZbor tipZbor,
-                       @Future Date dataPlecare,
-                       @Future Date dataSosire) {
+                       @Future LocalDateTime dataPlecare,
+                       @Future LocalDateTime dataSosire) {
         this.companieAeriana = companieAeriana;
         this.avion = avion;
         this.locatiePlecare = locatiePlecare;
-        this.locatieSosire = locatieSosire;
-        this.tipZbor = tipZbor;
+        this.locatieSosire = locatieSosire;;
         this.dataPlecare = dataPlecare;
         this.dataSosire = dataSosire;
     }
@@ -56,15 +54,11 @@ public class ZborRequest {
         return locatieSosire;
     }
 
-    public TipZbor getTipZbor() {
-        return tipZbor;
-    }
-
-    public Date getDataPlecare() {
+    public LocalDateTime getDataPlecare() {
         return dataPlecare;
     }
 
-    public Date getDataSosire() {
+    public LocalDateTime getDataSosire() {
         return dataSosire;
     }
 }

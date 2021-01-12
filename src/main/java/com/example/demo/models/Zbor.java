@@ -1,6 +1,6 @@
 package com.example.demo.models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Zbor {
     private long zborID;
@@ -8,25 +8,38 @@ public class Zbor {
     private long avionID;
     private long locatiePlecareID;
     private long locatieSosireID;
-    private int tipZborID;
-    private Date dataPlecare;
-    private Date dataSosire;
+    private LocalDateTime dataPlecare;
+    private LocalDateTime dataSosire;
 
     public Zbor() {
+    }
+
+    public Zbor(long zborID,
+                long companieAerianaID,
+                long avionID,
+                long locatiePlecareID,
+                long locatieSosireID,
+                LocalDateTime dataPlecare,
+                LocalDateTime dataSosire) {
+        this.zborID = zborID;
+        this.companieAerianaID = companieAerianaID;
+        this.avionID = avionID;
+        this.locatiePlecareID = locatiePlecareID;
+        this.locatieSosireID = locatieSosireID;
+        this.dataPlecare = dataPlecare;
+        this.dataSosire = dataSosire;
     }
 
     public Zbor(long companieAerianaID,
                 long avionID,
                 long locatiePlecareID,
                 long locatieSosireID,
-                int tipZborID,
-                Date dataPlecare,
-                Date dataSosire) {
+                LocalDateTime dataPlecare,
+                LocalDateTime dataSosire) {
         this.companieAerianaID = companieAerianaID;
         this.avionID = avionID;
         this.locatiePlecareID = locatiePlecareID;
         this.locatieSosireID = locatieSosireID;
-        this.tipZborID = tipZborID;
         this.dataPlecare = dataPlecare;
         this.dataSosire = dataSosire;
     }
@@ -51,15 +64,24 @@ public class Zbor {
         return locatieSosireID;
     }
 
-    public int getTipZborID() {
-        return tipZborID;
-    }
-
-    public Date getDataPlecare() {
+    public LocalDateTime getDataPlecare() {
         return dataPlecare;
     }
 
-    public Date getDataSosire() {
+    public LocalDateTime getDataSosire() {
         return dataSosire;
+    }
+
+    @Override
+    public String toString() {
+        return "Zbor{" +
+                "zborID=" + zborID +
+                ", companieAerianaID=" + companieAerianaID +
+                ", avionID=" + avionID +
+                ", locatiePlecareID=" + locatiePlecareID +
+                ", locatieSosireID=" + locatieSosireID +
+                ", dataPlecare=" + dataPlecare +
+                ", dataSosire=" + dataSosire +
+                '}';
     }
 }

@@ -20,7 +20,6 @@ public class ZborRequestToZborMapper {
                 zborRequest.getAvion().getAvionID(),
                 locatieRepository.getLocatieIDByNumeAeroport(zborRequest.getLocatiePlecare().getNumeAeroport()),
                 locatieRepository.getLocatieIDByNumeAeroport(zborRequest.getLocatieSosire().getNumeAeroport()),
-                zborRequest.getTipZbor().ordinal(),
                 zborRequest.getDataPlecare(),
                 zborRequest.getDataSosire());
     }

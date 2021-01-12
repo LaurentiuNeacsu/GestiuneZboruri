@@ -20,8 +20,8 @@ public class AvionController {
     private AvionRequestToAvionMapper avionRequestToAvionMapper;
 
     @GetMapping("/viewByCompNameAndAvail/{numeCompanie}")
-    public List<Avion> getAvioaneByCompanyAndAvailability(@PathVariable String numeCompanie) {
-        return avionService.getAvioaneByCompanyAndAvailability(numeCompanie);
+    public ResponseEntity<List<Avion>> getAvioaneByCompanyAndAvailability(@PathVariable String numeCompanie) {
+        return ResponseEntity.ok(avionService.getAvioaneByCompanyAndAvailability(numeCompanie));
     }
 
     @PostMapping("/add")

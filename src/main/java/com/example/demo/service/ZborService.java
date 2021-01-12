@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.models.Zbor;
 import com.example.demo.repository.ZborRepository;
+import com.example.demo.request_templates.ZborRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -11,7 +12,7 @@ public class ZborService {
     @Autowired
     private ZborRepository zborRepository;
 
-    public List<Zbor> getAllZboruri() {
+    public List<ZborRequest> getAllZboruri() {
         return zborRepository.getAllZboruri();
     }
 
@@ -27,8 +28,8 @@ public class ZborService {
         return zborRepository.stergeZbor(id);
     }
 
-    public Zbor vizualizeazaZborByID(Long id) {
-        return zborRepository.vizualizeazaZbor(id);
+    public Zbor getZborByID(Long id) {
+        return zborRepository.getZborByID(id);
     }
 
     public Zbor vizualizeazaZborDupaLocatiePlecare(String locatie) {

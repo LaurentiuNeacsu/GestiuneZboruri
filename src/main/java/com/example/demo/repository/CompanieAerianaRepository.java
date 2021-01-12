@@ -15,7 +15,6 @@ import java.util.List;
 public class CompanieAerianaRepository {
     @Autowired
     private JdbcTemplate companieAerianaJdbcTemplate;
-
     private static final Logger logger = LoggerFactory.getLogger(CompanieAerianaRepository.class);
     private final RowMapper<CompanieAeriana> mapper = (resultSet, rowNum) ->
             new CompanieAeriana(resultSet.getLong("companieID"),

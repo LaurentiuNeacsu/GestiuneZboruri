@@ -1,19 +1,15 @@
 package com.example.demo.models;
 
-import com.example.demo.utils.TipRezervare;
-
 public class Rezervare {
     private long rezervareID;
     private Zbor zbor;
     private Client client;
-    private TipRezervare tipRezervare;
     private double pret;
     private double discount;
 
-    public Rezervare(Zbor zbor, Client client, TipRezervare tipRezervare, double pret, double discount) {
+    public Rezervare(Zbor zbor, Client client, double pret, double discount) {
         this.zbor = zbor;
         this.client = client;
-        this.tipRezervare = tipRezervare;
         this.pret = pret;
         this.discount = discount;
     }
@@ -40,14 +36,6 @@ public class Rezervare {
 
     public void setClient(Client client) {
         this.client = client;
-    }
-
-    public TipRezervare getTipRezervare() {
-        return tipRezervare;
-    }
-
-    public void setTipRezervare(TipRezervare tipRezervare) {
-        this.tipRezervare = tipRezervare;
     }
 
     public double getPret() {

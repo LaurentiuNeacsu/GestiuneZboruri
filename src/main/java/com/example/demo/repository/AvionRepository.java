@@ -15,18 +15,19 @@ import java.util.List;
 public class AvionRepository {
     @Autowired
     private JdbcTemplate avionJdbcTemplate;
-    private static final Logger logger = LoggerFactory.getLogger(CompanieAerianaRepository.class);
-    private RowMapper<Avion> mapper = (resultSet, rowNum) ->
+    private static final Logger logger = LoggerFactory.getLogger(AvionRepository.class);
+    private final RowMapper<Avion> mapper = (resultSet, rowNum) ->
             new Avion(resultSet.getLong("avionID"),
                       resultSet.getString("nume"),
                       resultSet.getInt("capacitate"),
+                      resultSet.getLong("companieID"),
                       resultSet.getBoolean("areCursa"));
 
     public List<Avion> getAvioaneByCompanyAndAvailability(String companieNume) {
         return avionJdbcTemplate.query(
                 AvionQueries.SELECT_AVIOANE_BY_COMPANY_AND_AVAILABILITY,
-                new Object[]{companieNume},
-                new int[]{Types.VARCHAR},
+                new Object[] { companieNume },
+                new int[] { Types.VARCHAR },
                 mapper);
     }
 
