@@ -19,7 +19,8 @@ public class ZborRepository {
     private JdbcTemplate zborJdbcTemplate;
     private static final Logger logger = LoggerFactory.getLogger(ZborRepository.class);
     private final RowMapper<ZborRequest> mapper = (resultSet, rowNum) ->
-            new ZborRequest(new CompanieAeriana(resultSet.getLong("companieID"),
+            new ZborRequest(resultSet.getLong("zborID"),
+                            new CompanieAeriana(resultSet.getLong("companieID"),
                                                 resultSet.getString("numeCompanie")),
                             new Avion(resultSet.getLong("avionID"),
                                       resultSet.getString("nume"),

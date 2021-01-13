@@ -23,6 +23,10 @@ public class Locatie {
         this.tara = tara;
     }
 
+    public long getLocatieID() {
+        return locatieID;
+    }
+
     public String getNumeAeroport() {
         return numeAeroport;
     }

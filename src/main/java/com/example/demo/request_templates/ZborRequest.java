@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class ZborRequest {
+    private long zborID;
     @NotNull
     private CompanieAeriana companieAeriana;
     @NotNull
@@ -24,6 +25,9 @@ public class ZborRequest {
     @JsonFormat(pattern = "YYYY-MM-dd HH:mm")
     private LocalDateTime dataSosire;
 
+    public ZborRequest() {
+    }
+
     public ZborRequest(@NotNull CompanieAeriana companieAeriana,
                        @NotNull Avion avion,
                        @NotNull Locatie locatiePlecare,
@@ -36,6 +40,26 @@ public class ZborRequest {
         this.locatieSosire = locatieSosire;;
         this.dataPlecare = dataPlecare;
         this.dataSosire = dataSosire;
+    }
+
+    public ZborRequest(long zborID,
+                       @NotNull CompanieAeriana companieAeriana,
+                       @NotNull Avion avion,
+                       @NotNull Locatie locatiePlecare,
+                       @NotNull Locatie locatieSosire,
+                       @Future LocalDateTime dataPlecare,
+                       @Future LocalDateTime dataSosire) {
+        this.zborID = zborID;
+        this.companieAeriana = companieAeriana;
+        this.avion = avion;
+        this.locatiePlecare = locatiePlecare;
+        this.locatieSosire = locatieSosire;
+        this.dataPlecare = dataPlecare;
+        this.dataSosire = dataSosire;
+    }
+
+    public long getZborID() {
+        return zborID;
     }
 
     public CompanieAeriana getCompanieAeriana() {

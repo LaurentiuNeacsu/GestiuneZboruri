@@ -2,55 +2,49 @@ package com.example.demo.models;
 
 public class Rezervare {
     private long rezervareID;
-    private Zbor zbor;
-    private Client client;
+    private long zborID;
+    private long clientID;
     private double pret;
-    private double discount;
 
-    public Rezervare(Zbor zbor, Client client, double pret, double discount) {
-        this.zbor = zbor;
-        this.client = client;
+    public Rezervare() {
+    }
+
+    public Rezervare(long zborID, long clientID, double pret) {
+        this.zborID = zborID;
+        this.clientID = clientID;
         this.pret = pret;
-        this.discount = discount;
+    }
+
+    public Rezervare(long rezervareID, long zborID, long clientID, double pret) {
+        this.rezervareID = rezervareID;
+        this.zborID = zborID;
+        this.clientID = clientID;
+        this.pret = pret;
     }
 
     public long getRezervareID() {
         return rezervareID;
     }
 
-    public void setRezervareID(int rezervareID) {
-        this.rezervareID = rezervareID;
+    public long getZborID() {
+        return zborID;
     }
 
-    public Zbor getZbor() {
-        return zbor;
-    }
-
-    public void setZbor(Zbor zbor) {
-        this.zbor = zbor;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
+    public long getClientID() {
+        return clientID;
     }
 
     public double getPret() {
         return pret;
     }
 
-    public void setPret(double pret) {
-        this.pret = pret;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
+    @Override
+    public String toString() {
+        return "Rezervare{" +
+                "rezervareID=" + rezervareID +
+                ", zborID=" + zborID +
+                ", clientID=" + clientID +
+                ", pret=" + pret +
+                '}';
     }
 }
