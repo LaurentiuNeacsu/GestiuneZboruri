@@ -18,4 +18,8 @@ public class LocatieService {
     public void addLocatie(Locatie locatie) {
         locatieRepository.addLocatie(locatie);
     }
+
+    public void deleteLocatieByID(Long id) {
+        locatieRepository.deleteLocatieByID(id);
+    }
 }

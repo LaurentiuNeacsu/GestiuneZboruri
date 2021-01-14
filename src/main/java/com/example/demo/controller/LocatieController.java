@@ -5,6 +5,7 @@ import com.example.demo.service.LocatieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,8 +20,14 @@ public class LocatieController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addLocatie(@RequestBody Locatie locatie) {
+    public ResponseEntity<String> addLocatie(@Valid @RequestBody Locatie locatie) {
         locatieService.addLocatie(locatie);
-        return ResponseEntity.accepted().body("Locatia a fost adaugata cu succes.");
+        return ResponseEntity.accepted().body("Locatie adaugata cu succes.");
+    }
+
+    @DeleteMapping("/deleteByID/{id}")
+    public ResponseEntity<String> deleteLocatieByID(@PathVariable Long id) {
+        locatieService.deleteLocatieByID(id);
+        return ResponseEntity.accepted().body("Locatie stearsa cu succes");
     }
 }

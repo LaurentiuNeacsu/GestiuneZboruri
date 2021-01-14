@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import java.sql.Types;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -31,6 +32,17 @@ public class EscalaRepository {
 
     public void addEscala(Escala escala) {
         escalaJdbcTemplate.update(EscalaQueries.INSERT_ESCALA, escala.getZborID(), escala.getLocatie().getLocatieID());
-        logger.info("A fost adaugata escala reprezentata de obiectul: " + escala.toString());
+        String mesaj = "A fost adaugata escala reprezentata de obiectul: " + escala.toString();
+        LocalDateTime timestamp = LocalDateTime.now();
+        logger.info(mesaj + " " + timestamp);
+        escalaJdbcTemplate.update("INSERT INTO tblaudit(mesaj, timestamp) VALUES (?, ?)", mesaj, timestamp);
+    }
+
+    public void deleteEscalaByID(Long id) {
+        escalaJdbcTemplate.update(EscalaQueries.DELETE_ESCALA_BY_ID, id);
+        String mesaj = "A fost stearsa escala cu ID-ul " + id;
+        LocalDateTime timestamp = LocalDateTime.now();
+        logger.info(mesaj + " " + timestamp);
+        escalaJdbcTemplate.update("INSERT INTO tblaudit(mesaj, timestamp) VALUES (?, ?)", mesaj, timestamp);
     }
 }

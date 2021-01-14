@@ -1,8 +1,13 @@
 package com.example.demo.models;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+
 public class Escala {
     private long escalaID;
+    @Min(1)
     private long zborID;
+    @Valid
     private Locatie locatie;
 
     public Escala() {
@@ -34,8 +39,7 @@ public class Escala {
     @Override
     public String toString() {
         return "Escala{" +
-                "escalaID=" + escalaID +
-                ", zborID=" + zborID +
+                " zborID=" + zborID +
                 ", locatieID=" + locatie +
                 '}';
     }

@@ -18,4 +18,8 @@ public class EscalaService {
     public void addEscala(Escala escala) {
         escalaRepository.addEscala(escala);
     }
+
+    public void deleteEscalaByID(Long id) {
+        escalaRepository.deleteEscalaByID(id);
+    }
 }

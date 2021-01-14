@@ -1,9 +1,14 @@
 package com.example.demo.models;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Locatie {
     private long locatieID;
+    @NotEmpty
     private String numeAeroport;
+    @NotEmpty
     private String oras;
+    @NotEmpty
     private String tara;
 
     public Locatie() {
@@ -41,8 +46,7 @@ public class Locatie {
     @Override
     public String toString() {
         return "Locatie{" +
-                "locatieID=" + locatieID +
-                ", numeAeroport='" + numeAeroport + '\'' +
+                " numeAeroport='" + numeAeroport + '\'' +
                 ", oras='" + oras + '\'' +
                 ", tara='" + tara + '\'' +
                 '}';

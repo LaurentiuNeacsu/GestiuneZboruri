@@ -5,6 +5,7 @@ import com.example.demo.service.EscalaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,8 +20,14 @@ public class EscalaController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addEscala(@RequestBody Escala escala) {
+    public ResponseEntity<String> addEscala(@Valid @RequestBody Escala escala) {
         escalaService.addEscala(escala);
         return ResponseEntity.accepted().body("Escala adaugata cu succes");
+    }
+
+    @DeleteMapping("/deleteByID/{id}")
+    public ResponseEntity<String> deleteEscalaByID(@PathVariable Long id) {
+        escalaService.deleteEscalaByID(id);
+        return ResponseEntity.accepted().body("Escala stearsa cu succes");
     }
 }

@@ -1,9 +1,14 @@
 package com.example.demo.models;
 
+import javax.validation.constraints.NotEmpty;
+
 public class Client {
     private long clientID;
+    @NotEmpty
     private String nume;
+    @NotEmpty
     private String prenume;
+    @NotEmpty
     private String cnp;
 
     public Client() {
@@ -41,8 +46,7 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" +
-                "clientID=" + clientID +
-                ", nume='" + nume + '\'' +
+                " nume='" + nume + '\'' +
                 ", prenume='" + prenume + '\'' +
                 ", CNP='" + cnp + '\'' +
                 '}';

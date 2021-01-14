@@ -7,4 +7,5 @@ public class RezervareQueries {
             "FROM tblrezervare INNER JOIN " +
             "     tblclient ON tblclient.clientID = tblrezervare.clientID " +
             "WHERE nume = ?";
+    public static final String DELETE_REZERVARE_BY_ID = "DELETE FROM tblrezervare WHERE rezervareID = ?";
 }

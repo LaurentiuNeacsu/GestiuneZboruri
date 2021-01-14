@@ -18,4 +18,8 @@ public class AvionService {
     public void addAvion(Avion avion) {
         avionRepository.addAvion(avion);
     }
+
+    public void deleteAvionByID(Long id) {
+        avionRepository.deleteAvionByID(id);
+    }
 }

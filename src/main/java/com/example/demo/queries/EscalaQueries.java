@@ -7,4 +7,5 @@ public class EscalaQueries {
             "FROM tblescala INNER JOIN " +
                     "tbllocatie ON tbllocatie.locatieID = tblescala.locatieID " +
             "WHERE zborID = ?";
+    public static final String DELETE_ESCALA_BY_ID = "DELETE FROM tblescala WHERE escalaID = ?";
 }

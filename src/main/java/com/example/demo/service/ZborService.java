@@ -20,23 +20,15 @@ public class ZborService {
         zborRepository.addZbor(zbor);
     }
 
-    public void modificaZbor(int id) {
-        zborRepository.modificaZbor(id);
-    }
-
-    public Zbor stergeZbor(int id) {
-        return zborRepository.stergeZbor(id);
-    }
-
-    public Zbor getZborByID(Long id) {
+    public ZborRequest getZborByID(Long id) {
         return zborRepository.getZborByID(id);
     }
 
-    public Zbor vizualizeazaZborDupaLocatiePlecare(String locatie) {
-        return zborRepository.vizualizeazaZborDupaLocatiePlecare(locatie);
+    public List<ZborRequest> getZborByRuta(String locatiePlecare, String locatieSosire) {
+        return zborRepository.getZborByRuta(locatiePlecare, locatieSosire);
     }
 
-    public Zbor vizualizeazaZborDupaLocatieSosire(String locatie) {
-        return zborRepository.vizualizeazaZborDupaLocatieSosire(locatie);
+    public void deleteZborByID(Long id) {
+        zborRepository.deleteZborByID(id);
     }
 }

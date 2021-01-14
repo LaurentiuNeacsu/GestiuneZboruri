@@ -30,4 +30,10 @@ public class AvionController {
         avionService.addAvion(avionCreat);
         return ResponseEntity.accepted().body("Avion adaugat cu succes.");
     }
+
+    @DeleteMapping("/deleteByID/{id}")
+    public ResponseEntity<String> deleteAvion(@PathVariable Long id) {
+        avionService.deleteAvionByID(id);
+        return ResponseEntity.accepted().body("Avion sters cu succes");
+    }
 }

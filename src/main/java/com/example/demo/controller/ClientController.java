@@ -5,6 +5,7 @@ import com.example.demo.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,9 +20,9 @@ public class ClientController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<String> addClient(@RequestBody Client client) {
+    public ResponseEntity<String> addClient(@Valid @RequestBody Client client) {
         clientService.addClient(client);
-        return ResponseEntity.accepted().body("Clientul a fost adaugat cu succes");
+        return ResponseEntity.accepted().body("Client adaugat cu succes");
     }
 
     @GetMapping("/viewByID/{id}")
@@ -30,7 +31,13 @@ public class ClientController {
     }
 
     @GetMapping("/viewByNume")
-    public ResponseEntity<Client> getClientByNume(@RequestParam String nume) {
+    public ResponseEntity<List<Client>> getClientByNume(@RequestParam String nume) {
         return ResponseEntity.ok(clientService.getClientByNume(nume));
+    }
+
+    @DeleteMapping("/deleteByID/{id}")
+    public ResponseEntity<String> deleteClient(@PathVariable Long id) {
+        clientService.deleteClient(id);
+        return ResponseEntity.accepted().body("Client sters cu succes");
     }
 }

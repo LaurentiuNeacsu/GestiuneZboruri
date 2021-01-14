@@ -1,7 +1,10 @@
 package com.example.demo.models;
 
+import javax.validation.constraints.NotEmpty;
+
 public class CompanieAeriana {
     private long companieID;
+    @NotEmpty
     private String numeCompanie;
 
     public CompanieAeriana() {
@@ -28,8 +31,7 @@ public class CompanieAeriana {
     @Override
     public String toString() {
         return "CompanieAeriana{" +
-                "companieID=" + companieID +
-                ", numeCompanie='" + numeCompanie + '\'' +
+                " numeCompanie='" + numeCompanie + '\'' +
                 '}';
     }
 }

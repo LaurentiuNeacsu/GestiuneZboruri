@@ -31,23 +31,19 @@ public class ZborController {
         return ResponseEntity.accepted().body("Zbor adaugat cu succes.");
     }
 
-    @PostMapping("/editByID")
-    public void editZbor(int zborID) {
-        zborService.modificaZbor(zborID);
-    }
-
     @GetMapping("/viewByID/{id}")
-    public Zbor getZborByID(@PathVariable Long id) {
-        return zborService.getZborByID(id);
+    public ResponseEntity<ZborRequest> getZborByID(@PathVariable Long id) {
+        return ResponseEntity.ok(zborService.getZborByID(id));
     }
 
-    @GetMapping("/viewByLocatiePlecare")
-    public Zbor vizualizeazaZborDupaLocatiePlecare(String locatie) {
-        return zborService.vizualizeazaZborDupaLocatiePlecare(locatie);
+    @GetMapping("/viewByRuta")
+    public ResponseEntity<List<ZborRequest>> getZborByRuta(@RequestParam String locatiePlecare, @RequestParam String locatieSosire) {
+        return ResponseEntity.ok().body(zborService.getZborByRuta(locatiePlecare, locatieSosire));
     }
 
-    @GetMapping("/viewByLocatieSosire")
-    public Zbor vizualizeazaZborDupaLocatieSosire(String locatie) {
-        return zborService.vizualizeazaZborDupaLocatieSosire(locatie);
+    @DeleteMapping("/deleteByID/{id}")
+    public ResponseEntity<String> deleteZborByID(@PathVariable Long id) {
+        zborService.deleteZborByID(id);
+        return ResponseEntity.accepted().body("Zbor sters cu succes");
     }
 }

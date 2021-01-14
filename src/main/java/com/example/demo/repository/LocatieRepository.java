@@ -1,16 +1,15 @@
 package com.example.demo.repository;
 
-import com.example.demo.models.CompanieAeriana;
 import com.example.demo.models.Locatie;
 import com.example.demo.queries.LocatieQueries;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import java.sql.Types;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -42,6 +41,17 @@ public class LocatieRepository {
                 locatie.getNumeAeroport(),
                 locatie.getOras(),
                 locatie.getTara());
-        logger.info("A fost adaugata locatia reprezentata de obiectul: " + locatie.toString());
+        String mesaj = "A fost adaugata locatia reprezentata de obiectul: " + locatie.toString();
+        LocalDateTime timestamp = LocalDateTime.now();
+        logger.info(mesaj + " " + timestamp);
+        locatieJdbcTemplate.update("INSERT INTO tblaudit(mesaj, timestamp) VALUES (?, ?)", mesaj, timestamp);
+    }
+
+    public void deleteLocatieByID(Long id) {
+        locatieJdbcTemplate.update(LocatieQueries.DELETE_LOCATIE_BY_ID, id);
+        String mesaj = "A fost stearsa locatia cu ID-ul: " + id;
+        LocalDateTime timestamp = LocalDateTime.now();
+        logger.info(mesaj + " " + timestamp);
+        locatieJdbcTemplate.update("INSERT INTO tblaudit(mesaj, timestamp) VALUES (?, ?)", mesaj, timestamp);
     }
 }

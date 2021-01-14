@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import java.sql.Types;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -36,7 +37,10 @@ public class CompanieAerianaRepository {
 
     public void addCompanieAeriana(CompanieAeriana companieAeriana) {
         companieAerianaJdbcTemplate.update(CompanieAerianaQueries.INSERT_COMPANIE, companieAeriana.getNumeCompanie());
-        logger.info("A fost adaugata compania reprezentata de obiectul: " + companieAeriana.toString());
+        String mesaj = "A fost adaugata compania reprezentata de obiectul:  " + companieAeriana.toString();
+        LocalDateTime timestamp = LocalDateTime.now();
+        logger.info(mesaj + " " + timestamp);
+        companieAerianaJdbcTemplate.update("INSERT INTO tblaudit(mesaj, timestamp) VALUES (?, ?)", mesaj, timestamp);
     }
 
     public CompanieAeriana getCompanieAerianaByID(Long id) {
@@ -45,5 +49,13 @@ public class CompanieAerianaRepository {
                 new Object[]{id},
                 new int[]{Types.INTEGER},
                 mapper);
+    }
+
+    public void deleteCompanieAerianaByID(Long id) {
+        companieAerianaJdbcTemplate.update(CompanieAerianaQueries.DELETE_COMPANIE_BY_ID, id);
+        String mesaj = "A fost stearsa compania cu ID-ul " + id;
+        LocalDateTime timestamp = LocalDateTime.now();
+        logger.info(mesaj + " " + timestamp);
+        companieAerianaJdbcTemplate.update("INSERT INTO tblaudit(mesaj, timestamp) VALUES (?, ?)", mesaj, timestamp);
     }
 }

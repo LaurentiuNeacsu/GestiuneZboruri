@@ -23,7 +23,11 @@ public class ClientService {
         return clientRepository.getClientByID(id);
     }
 
-    public Client getClientByNume(String nume) {
+    public List<Client> getClientByNume(String nume) {
         return clientRepository.getClientByNume(nume);
+    }
+
+    public void deleteClient(Long id) {
+        clientRepository.deleteClient(id);
     }
 }

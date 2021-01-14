@@ -75,8 +75,7 @@ public class Zbor {
     @Override
     public String toString() {
         return "Zbor{" +
-                "zborID=" + zborID +
-                ", companieAerianaID=" + companieAerianaID +
+                " companieAerianaID=" + companieAerianaID +
                 ", avionID=" + avionID +
                 ", locatiePlecareID=" + locatiePlecareID +
                 ", locatieSosireID=" + locatieSosireID +

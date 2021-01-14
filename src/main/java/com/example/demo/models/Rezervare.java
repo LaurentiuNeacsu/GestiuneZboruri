@@ -1,9 +1,14 @@
 package com.example.demo.models;
 
+import javax.validation.constraints.Min;
+
 public class Rezervare {
     private long rezervareID;
+    @Min(1)
     private long zborID;
+    @Min(1)
     private long clientID;
+    @Min(1)
     private double pret;
 
     public Rezervare() {
@@ -41,8 +46,7 @@ public class Rezervare {
     @Override
     public String toString() {
         return "Rezervare{" +
-                "rezervareID=" + rezervareID +
-                ", zborID=" + zborID +
+                " zborID=" + zborID +
                 ", clientID=" + clientID +
                 ", pret=" + pret +
                 '}';

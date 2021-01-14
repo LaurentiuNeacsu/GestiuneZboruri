@@ -3,26 +3,24 @@ package com.example.demo.request_templates;
 import com.example.demo.models.Avion;
 import com.example.demo.models.CompanieAeriana;
 import com.example.demo.models.Locatie;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import javax.validation.Valid;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class ZborRequest {
     private long zborID;
-    @NotNull
+    @Valid
     private CompanieAeriana companieAeriana;
-    @NotNull
+    @Valid
     private Avion avion;
-    @NotNull
+    @Valid
     private Locatie locatiePlecare;
-    @NotNull
+    @Valid
     private Locatie locatieSosire;
     @Future
-    @JsonFormat(pattern = "YYYY-MM-dd HH:mm")
     private LocalDateTime dataPlecare;
     @Future
-    @JsonFormat(pattern = "YYYY-MM-dd HH:mm")
     private LocalDateTime dataSosire;
 
     public ZborRequest() {

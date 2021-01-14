@@ -4,7 +4,6 @@ import com.example.demo.models.CompanieAeriana;
 import com.example.demo.repository.CompanieAerianaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -22,5 +21,9 @@ public class CompanieAerianaService {
 
     public CompanieAeriana getCompanieAerianaByID(Long id) {
         return companieAerianaRepository.getCompanieAerianaByID(id);
+    }
+
+    public void deleteCompanieAerianaByID(Long id) {
+        companieAerianaRepository.deleteCompanieAerianaByID(id);
     }
 }

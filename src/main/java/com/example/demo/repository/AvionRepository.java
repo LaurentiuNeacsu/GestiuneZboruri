@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import java.sql.Types;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -38,6 +39,17 @@ public class AvionRepository {
                 avion.getCapacitate(),
                 avion.getCompanieID(),
                 avion.getAreCursa());
-        logger.info("A fost adaugat avionul reprezentat de obiectul: " + avion.toString());
+        String mesaj = "A fost adaugat avionul reprezentat de obiectul: " + avion.toString();
+        LocalDateTime timestamp = LocalDateTime.now();
+        logger.info(mesaj + " " + timestamp);
+        avionJdbcTemplate.update("INSERT INTO tblaudit(mesaj, timestamp) VALUES (?, ?)", mesaj, timestamp);
+    }
+
+    public void deleteAvionByID(Long id) {
+        avionJdbcTemplate.update(AvionQueries.DELETE_AVION_BY_ID, id);
+        String mesaj = "A fost sters avionul cu ID-ul " + id;
+        LocalDateTime timestamp = LocalDateTime.now();
+        logger.info(mesaj + " " + timestamp);
+        avionJdbcTemplate.update("INSERT INTO tblaudit(mesaj, timestamp) VALUES (?, ?)", mesaj, timestamp);
     }
 }

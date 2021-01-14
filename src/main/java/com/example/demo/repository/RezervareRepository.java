@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import java.sql.Types;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -36,6 +37,17 @@ public class RezervareRepository {
                 rezervare.getZborID(),
                 rezervare.getClientID(),
                 rezervare.getPret());
-        logger.info("A fost adaugata rezervarea reprezentata de obiectul: " + rezervare.toString());
+        String mesaj = "A fost adaugata rezervarea reprezentata de obiectul: " + rezervare.toString();
+        LocalDateTime timestamp = LocalDateTime.now();
+        logger.info(mesaj + " " + timestamp);
+        rezervareJdbcTemplate.update("INSERT INTO tblaudit(mesaj, timestamp) VALUES (?, ?)", mesaj, timestamp);
+    }
+
+    public void deleteRezervareByID(Long id) {
+        rezervareJdbcTemplate.update(RezervareQueries.DELETE_REZERVARE_BY_ID, id);
+        String mesaj = "A fost stearsa rezervarea cu ID-ul: " + id;
+        LocalDateTime timestamp = LocalDateTime.now();
+        logger.info(mesaj + " " + timestamp);
+        rezervareJdbcTemplate.update("INSERT INTO tblaudit(mesaj, timestamp) VALUES (?, ?)", mesaj, timestamp);
     }
 }
