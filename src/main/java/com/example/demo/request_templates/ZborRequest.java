@@ -3,20 +3,15 @@ package com.example.demo.request_templates;
 import com.example.demo.models.Avion;
 import com.example.demo.models.CompanieAeriana;
 import com.example.demo.models.Locatie;
-import javax.validation.Valid;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class ZborRequest {
     private long zborID;
-    @Valid
     private CompanieAeriana companieAeriana;
-    @Valid
     private Avion avion;
-    @Valid
     private Locatie locatiePlecare;
-    @Valid
     private Locatie locatieSosire;
     @Future
     private LocalDateTime dataPlecare;
